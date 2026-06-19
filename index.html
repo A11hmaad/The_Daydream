@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Friend's Digital Book</title>
+    <title>The Daydream - Digital Book</title>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
@@ -20,7 +20,7 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-        const analytics = getAnalytics(app); // Included as per your provided config
+        const analytics = getAnalytics(app);
         
         window.db = db;
         window.doc = doc;
@@ -37,7 +37,7 @@
 <body>
 
     <div id="login-screen">
-        <h2>Select Role</h2>
+        <h2>Enter The Daydream</h2>
         <button onclick="login('viewer')">Enter as Viewer</button>
         <hr>
         <input type="password" id="passInput" placeholder="Editor Password">
@@ -45,7 +45,7 @@
     </div>
 
     <div id="app-screen" class="hidden">
-        <h2 id="role-title">Digital Book</h2>
+        <h2 id="role-title">The Daydream</h2>
         <button onclick="location.reload()">Logout</button>
         
         <div id="editor-controls" class="hidden">
@@ -61,9 +61,16 @@
             <div id="text-display"></div>
             <div id="editor-tools" class="hidden">
                 <hr>
+                <div style="margin-bottom: 10px;">
+                    <button type="button" onclick="document.execCommand('bold', false, null)"><b>B</b></button>
+                    <button type="button" onclick="document.execCommand('italic', false, null)"><i>I</i></button>
+                    <button type="button" onclick="document.execCommand('underline', false, null)"><u>U</u></button>
+                </div>
                 <div id="edit-area" contenteditable="true"></div>
-                <button onclick="saveContent()">Save Changes</button>
-                <button onclick="deleteChapter()" style="color: red;">Delete Chapter</button>
+                <div style="margin-top: 10px;">
+                    <button onclick="saveContent()">Save Changes</button>
+                    <button onclick="deleteChapter()" style="color: red;">Delete Chapter</button>
+                </div>
             </div>
         </div>
     </div>
